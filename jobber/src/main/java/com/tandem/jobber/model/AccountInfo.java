@@ -5,11 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 
-//@Entity
-//@Table(name = "AccountInfo")
+@Entity
+@Table(name = "AccountInfo")
 public class AccountInfo {
 	
 	@Id
@@ -17,8 +19,6 @@ public class AccountInfo {
 	@Column(name = "idAccountInfo", nullable = false)
 	private Long idAccountInfo;
 	
-	@Email
-	private String email;
 	
 	@Column(name = "phone")
 	private String phone;
@@ -28,6 +28,10 @@ public class AccountInfo {
 	
 	@Column(name = "city")
 	private String city;
+	
+	
+	@OneToOne @JoinColumn( name="idAccount" )
+    private Account account;
 
 	
 	public Long getIdAccountInfo() {
@@ -38,13 +42,6 @@ public class AccountInfo {
 		this.idAccountInfo = idAccountInfo;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 	public String getPhone() {
 		return phone;
