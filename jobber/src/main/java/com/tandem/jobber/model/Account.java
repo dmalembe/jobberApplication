@@ -10,31 +10,45 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
-//@Entity
-//@Table(name = "Account")
-//@Inheritance( strategy = InheritanceType.JOINED )
-public class Account {
+
+@Entity
+@Table(name = "Account")
+@Inheritance( strategy = InheritanceType.JOINED )
+public abstract class Account {
 	
 	@Id@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long idAccount;
 	
-	@Column(name = "login")
-	private String login;
+	@Column(name = "username")
+	private  String username;
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	@Column(name = "email")
+	private String email;
 	
 	@Column(name = "password")
 	private String password;
 	
-//	@OneToOne(mappedBy = "user")
+	@OneToOne(mappedBy = "account")
 	private AccountInfo accountInfo;
 	
-//	@ManyToMany
-//	@JoinTable ( name = "Account_Roles",
-//            joinColumns =  @JoinColumn( name = "idAccount" ),
-//            inverseJoinColumns = @JoinColumn( name = "idRole" ) )
+	@ManyToMany
+	@JoinTable ( name = "Account_Roles",
+            joinColumns = {@JoinColumn( name = "idAccount" )},
+            inverseJoinColumns = {@JoinColumn( name = "idRole" )} )
 	private Set<Role> roles = new HashSet<>();
 	
 
@@ -46,12 +60,21 @@ public class Account {
 		this.idAccount = idAccount;
 	}
 
-	public String getLogin() {
-		return login;
+
+	public String getEmail() {
+		return email;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public Set<Role> getRoles() {
+        return roles;
+    }
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 	public String getPassword() {
@@ -70,11 +93,7 @@ public class Account {
 		this.accountInfo = accountInfo;
 	}
 	
-	public Set<Role> getRoles() {
-        return roles;
-    }
-	
-	
-	
 
+	
+	
 }
