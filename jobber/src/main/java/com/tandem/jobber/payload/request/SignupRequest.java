@@ -8,9 +8,14 @@ public class SignupRequest {
 
 	private String username;
 	
+	private String firstname;
+	
+	private String lastname;
+	
+
 	private String email;
 	
-	private Set<Role> roles;
+	private Set<String> roles;
 	
 	private String password;
 	
@@ -23,6 +28,22 @@ public class SignupRequest {
 		this.username = username;
 	}
 
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -31,11 +52,12 @@ public class SignupRequest {
 		this.email = email;
 	}
 
-	public Set<Role> getRoles() {
+
+	public Set<String> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<Role> roles) {
+	public void setRoles(Set<String> roles) {
 		this.roles = roles;
 	}
 

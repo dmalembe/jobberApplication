@@ -12,7 +12,15 @@ public class ApplicantAccount extends Account {
 	private String firstname;
 	
 	private String lastname;
-
+	
+	//Constructor
+	public ApplicantAccount(String username,String email,String password,String firstname,String lastname) {
+		super();
+		this.firstname=firstname;
+		this.lastname=lastname ;
+	}
+	
+	//Getters & setters
 	public String getFirstname() {
 		return firstname;
 	}

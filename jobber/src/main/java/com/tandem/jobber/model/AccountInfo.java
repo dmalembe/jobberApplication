@@ -10,12 +10,18 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "AccountInfo")
+@Data
+@NoArgsConstructor@AllArgsConstructor
 public class AccountInfo {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idAccountInfo", nullable = false)
 	private Long idAccountInfo;
 	

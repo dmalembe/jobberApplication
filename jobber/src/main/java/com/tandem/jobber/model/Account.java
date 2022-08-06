@@ -14,28 +14,28 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.JoinColumn;
 
 
 @Entity
 @Table(name = "Account")
 @Inheritance( strategy = InheritanceType.JOINED )
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class Account {
 	
-	@Id@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idAccount;
 	
 	@Column(name = "username")
 	private  String username;
 	
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 	@Column(name = "email")
 	private String email;
 	
@@ -51,6 +51,9 @@ public abstract class Account {
             inverseJoinColumns = {@JoinColumn( name = "idRole" )} )
 	private Set<Role> roles = new HashSet<>();
 	
+	
+
+	//Getters & setters
 
 	public Long getIdAccount() {
 		return idAccount;
@@ -60,6 +63,13 @@ public abstract class Account {
 		this.idAccount = idAccount;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+	
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	public String getEmail() {
 		return email;

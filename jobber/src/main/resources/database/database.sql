@@ -3,7 +3,7 @@
 -- ------------------------------------------------------------------------------
 DROP DATABASE IF EXISTS jobberApplication;
 CREATE DATABASE jobberApplication;
-USE jobberApplication;
+--USE jobberApplication;--
 
 
 -- -----------------------------------------------------------------------------

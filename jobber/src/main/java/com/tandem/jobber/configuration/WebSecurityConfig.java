@@ -20,6 +20,7 @@ import com.tandem.jobber.security.services.UserDetailsServiceImpl;
 
 
 
+@SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)

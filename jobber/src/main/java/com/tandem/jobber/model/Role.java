@@ -19,10 +19,10 @@ import com.tandem.jobber.enumeration.ERole;
 
 
 @Entity
-@Table(name = "role")
+@Table(name = "roles")
 public class Role {
 	
-	@Id@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idRole")
 	private Long idRole;
 	
